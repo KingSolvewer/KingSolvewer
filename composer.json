@@ -1,0 +1,8 @@
+{
+
+    "require": {
+        "predis/predis": "^1.1",
+        "maximebf/debugbar": "^1.15",
+        "phpunit/phpunit": "5.7.27"
+    }
+}
