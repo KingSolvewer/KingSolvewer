@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上传视频进度条</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../layui/layui-v2.1.5/layui/css/layui.css"  media="all">
+</head>
+<body>
+    <button type="button" class="layui-btn" id="video-upload-trigger"><i class="layui-icon"></i>上传视频</button>
+    <div class="layui-progress layui-progress-big" lay-showPercent="yes" lay-filter="progressBar">
+        <div class="layui-progress-bar layui-bg-red" lay-percent="0%"></div>
+    </div>
+</body>
+<script src="../layui/layui-v2.1.5/layui/layui.js" charset="utf-8"></script>
+<script src="../layui/layui-v2.1.5/ztree/js/jquery-1.4.4.min.js" charset="utf-8"></script>
+<script type="application/javascript">
+    layui.use(['upload', 'element', 'layer'], function() {
+        var upload = layui.upload,
+            element = layui.element,
+            layer = layui.layer;
+        element.init();
+
+        var index = layer.load(1, {
+            shade: [0.1,'#fff'] //0.1透明度的白色背景
+        });
+
+        upload.render({
+            elem: '#video-upload-trigger', // 文件选择
+            accept: 'video',
+            url: '/apps/ttest/upload_video.php',
+            progress: function (e, percent) {
+                console.log("进度：" + percent + '%');
+                element.progress('progressBar', percent + '%');
+            },
+            done: function (res) {
+                layer.msg(res.msg);
+            },
+            error: function (res) {
+                layer.msg(res.msg);
+            }
+        });
+    });
+
+
+</script>
+</html>
