@@ -1,5 +1,5 @@
 <?php
-$path = __DIR__ . '/apps';
+$path = __DIR__ . '/remove';
 $paths = scandir($path);
 
 foreach ($paths as $key => $file) {

@@ -17,7 +17,7 @@ include __DIR__ . '/ttest/Error.php';
 $arr = include __DIR__ . '/arr.php';
 //throw new Exception('sdfjskd');
 //imageline();
-
+fsockopen();
 var_dump(urldecode(false));
 exit;
 var_dump(strpos('./uploads/make/20200330/15855506541561.jpg', '/'));
