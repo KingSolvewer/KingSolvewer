@@ -8,5 +8,13 @@
 
 class Login
 {
+    public function index()
+    {
+        echo 1;
+    }
 
+    public function logout()
+    {
+        var_dump();
+    }
 }

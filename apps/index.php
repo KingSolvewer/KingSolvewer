@@ -9,18 +9,30 @@
 include __DIR__ . '/ttest/PropertyVisible.php';
 include __DIR__ . '/../Json.php';
 include __DIR__ . '/User.php';
+include __DIR__ . '/ttest/AccessObjectAsArray.php';
+include __DIR__ . '/ttest/Error.php';
+//include __DIR__ . '/ttest/wateropacity.php';
+//include __DIR__ . '/ttest/watermark.php';
+//include __DIR__ . '/ttest/process_image.php';
 $arr = include __DIR__ . '/arr.php';
+//throw new Exception('sdfjskd');
+//imageline();
 
+var_dump(urldecode(false));
+exit;
+var_dump(strpos('./uploads/make/20200330/15855506541561.jpg', '/'));
+foreach ([] as $value) {
+    echo $value, "\r\n";
+}
 
-$array = [
-    'a' => 1,
-    'b' => 'cdfsd',
-    'c' => 'afkasl
-    alkdflsa
-    !@#$%^&*():"\|><?/*-+_-.; ,./'
-];
+$a = 1;
+$b = 4;
 
+$c = $a + $b;
 
+$d = $c * ($a - $b);
+
+echo $d;
 
 
 
@@ -37,48 +49,152 @@ $array = [
 
 
 exit;
+$a = 1;
+$b = [2, 3];
+$array = [&$a, &$b[0], &$b[1]];
+$array[0] ++;
+$array[1] ++;
+$array[2] ++;
+
+var_dump($a, $b);
+exit;
+
+
+\apps\ttest\Error::register();
+
+//var_dump(new PDO('mysql://27.0.0.1', 'roots', 'admin123'));
+
+$message = "this is " . __FILE__;
+$message = wordwrap($message, 70);
+$res = mail("1185642841@qq.com", 'my Subject', $message);
+if (!$res) {
+    $errorMessage = error_get_last()['message'];
+}
+var_dump($errorMessage);
+
+exit;
+$divisor = 0;
+if ($divisor == 0) {
+    trigger_error("Cannot divide by zero", E_USER_ERROR);
+}
+@bb();
+var_dump(error_get_last());
+
+
+set_exception_handler('exception_handler');
+
+throw new Exception('Uncaught Exception2');
+echo "Not Executed\n";
+
+function exception_handler(\Exception $e)
+{
+    echo "Uncaught exception: {$e->getMessage()}", "\r\n";
+}
+
+
+
+
+
+
+
+exit;
+
+try {
+    if (!function_exists($func = 'bb')) {
+        throw new Exception("函数{$func}不存在");
+    }
+    bb();
+} catch (Exception $exception) {
+    echo $exception->getMessage();
+}
+
+try {
+//    aa();
+    call_user_func('aa');
+} catch (Exception $exception) {
+    echo $exception->getMessage();
+}
+
+try {
+    new PDO('mysql://27.0.0.1', 'roots', 'admin123');
+    checkNum(2);
+    echo 'If you see this, the number is 1 or below', "\r\n";
+} catch (Exception $exception) {
+    echo $exception->getMessage(), "\r\n";
+}
+
+
+function aa($a)
+{
+    if (is_null($a)) {
+        throw new Exception('没有传递参数');
+    }
+    return $a;
+}
+
+
+
+
+
+exit;
+
+
+function checkNum($num)
+{
+    if ($num > 1) {
+        throw new Exception('Value must be 1 or below');
+    }
+}
+
 
 $errfile = 'error.log';
 // Create a stream
 $url = 'http://www.example.com';
 interface Base
 {
-    public function test();
+
 }
 
 class A implements Base
 {
-    public $a = 1;
-    protected $b = 1;
-    private $c = 1;
-
-    public function getA()
+    public static function who()
     {
-        print_r($this);
-        echo "\r\n";;
+        echo __CLASS__, "\r\n";
+        print_r(new self());
     }
 
-    public function getA1()
+    public static function test()
     {
-        print_r($this);
-        echo "\r\n";
+        self::who();
     }
 
-    public function test()
+    public static function test1()
     {
-
+        static::who();
     }
 }
 
 class B extends A
 {
-    public function getA()
+    public static function who()
     {
-        parent::getA();
+        echo '这里使用到了本类，即后期静态绑定', "\r\n";
+        echo __CLASS__, "\r\n";
+        print_r(new self);
     }
 }
 
-(new B())->getA();
+
+A::test();
+B::test();
+echo "\r\n";
+echo "\r\n";
+echo "\r\n";
+echo "\r\n";
+
+A::test1();
+B::test1();
+
 
 
 
