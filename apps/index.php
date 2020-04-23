@@ -4,6 +4,8 @@
  * @link $url = 'http://localhost:44944/image/image1.jpg';
  */
 //namespace wsw;
+date_default_timezone_set('Asia/Shanghai');
+
 //include __DIR__ . '/ttest/anonymous.php';
 //include __DIR__ . '/../vendor/autoload.php';
 include __DIR__ . '/ttest/PropertyVisible.php';
@@ -15,9 +17,63 @@ include __DIR__ . '/ttest/Error.php';
 //include __DIR__ . '/ttest/watermark.php';
 //include __DIR__ . '/ttest/process_image.php';
 $arr = include __DIR__ . '/arr.php';
+ini_set('error_reporting', E_ALL | E_NOTICE);
+echo '<pre>';
+
+print_r(ini_get('error_reporting'));
+
+echo "\r\n";
+exit;
+//phpinfo();
+try {
+    // The message
+    $message = "Line 1\r\nLine 2\r\nLine 3";
+
+// In case any of our lines are larger than 70 characters, we should use wordwrap()
+    $message = wordwrap($message, 70, "\r\n");
+
+// Send
+    mail('1185642841@qq.com', 'My Subject', $message);
+} catch (Exception $exception) {
+    echo $exception->getMessage();
+}
+exit;
 //throw new Exception('sdfjskd');
 //imageline();
-fsockopen();
+
+$fp = fopen('index3.php', 'r');
+preg_match('#/\*(.+?)\*/#', fgets($fp), $matches);
+echo '<pre>';
+
+print_r(unserialize($matches[1]));
+
+echo "\r\n";
+exit;
+$func = function ($arr) use (&$func) {
+    echo '<pre>';
+
+    print_r($func);
+
+    echo "\r\n";
+//    exit;
+    if (is_array($arr)) {
+        foreach ($arr as $key => $val) {
+            $func($val);
+        }
+    } else {
+        echo $arr, "\r\n";
+    }
+};
+$func($arr);
+
+echo '<pre>';
+
+print_r($func);
+
+echo "\r\n";
+exit;
+
+exit;
 var_dump(urldecode(false));
 exit;
 var_dump(strpos('./uploads/make/20200330/15855506541561.jpg', '/'));
@@ -154,7 +210,15 @@ interface Base
 {
 
 }
+abstract class BB
+{
+    public function gt()
+    {
 
+    }
+
+    abstract public function gy();
+}
 class A implements Base
 {
     public static function who()

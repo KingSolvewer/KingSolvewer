@@ -17,6 +17,12 @@ foreach ($paths as $key => $file) {
     }
 }
 
+$deleteDir = null;
+
+$deleteDir = function ($path) use (&$deleteDir) {
+
+};
+
 
 
 
