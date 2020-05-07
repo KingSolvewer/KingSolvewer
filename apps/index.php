@@ -12,15 +12,45 @@ include __DIR__ . '/ttest/PropertyVisible.php';
 include __DIR__ . '/../Json.php';
 include __DIR__ . '/User.php';
 include __DIR__ . '/ttest/AccessObjectAsArray.php';
+include __DIR__ . '/ttest/observer/MyObserver1.php';
+include __DIR__ . '/ttest/observer/MyObserver2.php';
+include __DIR__ . '/ttest/subject/MySubject.php';
 include __DIR__ . '/ttest/Error.php';
 //include __DIR__ . '/ttest/wateropacity.php';
 //include __DIR__ . '/ttest/watermark.php';
 //include __DIR__ . '/ttest/process_image.php';
 $arr = include __DIR__ . '/arr.php';
 ini_set('error_reporting', E_ALL | E_NOTICE);
+$observer1 = new \apps\ttest\observer\MyObserver1();
+$observer2 = new \apps\ttest\observer\MyObserver2();
+
+$subject = new \apps\ttest\subject\MySubject("test");
+
+$subject->attach($observer1);
+$subject->attach($observer2);
+$subject->notify();
+
+
+exit;
+$obj = new \apps\ttest\AccessObjectAsArray($arr);
+
+foreach ($obj as $item => $value) {
+    echo '<pre>';
+
+    print_r($value);
+
+    echo "\r\n";
+//    exit;
+}
+
+
+
+
+
+exit;
 echo '<pre>';
 
-print_r(ini_get('error_reporting'));
+print_r(realpath('controller/Email.php'));
 
 echo "\r\n";
 exit;
