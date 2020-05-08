@@ -4,7 +4,7 @@
  * @link $url = 'http://localhost:44944/image/image1.jpg';
  */
 //namespace wsw;
-date_default_timezone_set('Asia/Shanghai');
+//date_default_timezone_set('Asia/Shanghai');
 
 //include __DIR__ . '/ttest/anonymous.php';
 //include __DIR__ . '/../vendor/autoload.php';
@@ -16,11 +16,16 @@ include __DIR__ . '/ttest/observer/MyObserver1.php';
 include __DIR__ . '/ttest/observer/MyObserver2.php';
 include __DIR__ . '/ttest/subject/MySubject.php';
 include __DIR__ . '/ttest/Error.php';
+include __DIR__ . '/ttest/SeasLogger.php';
 //include __DIR__ . '/ttest/wateropacity.php';
 //include __DIR__ . '/ttest/watermark.php';
 //include __DIR__ . '/ttest/process_image.php';
 $arr = include __DIR__ . '/arr.php';
-ini_set('error_reporting', E_ALL | E_NOTICE);
+//ini_set('error_reporting', E_ALL | E_NOTICE);
+$logger = new \apps\ttest\SeasLogger();
+var_dump($logger->getBasePath());
+var_dump(SEASLOG_VERSION);
+//error_log();
 $observer1 = new \apps\ttest\observer\MyObserver1();
 $observer2 = new \apps\ttest\observer\MyObserver2();
 
