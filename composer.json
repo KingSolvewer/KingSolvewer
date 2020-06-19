@@ -3,6 +3,9 @@
     "require": {
         "predis/predis": "^1.1",
         "maximebf/debugbar": "^1.15",
-        "phpunit/phpunit": "5.7.27"
+        "phpunit/phpunit": "5.7.27",
+      "ext-pdo": "*",
+      "ext-json": "*",
+      "ext-curl": "*"
     }
 }

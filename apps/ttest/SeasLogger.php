@@ -9,9 +9,11 @@
 namespace apps\ttest;
 
 
-use \SeasLog;
+use SeasLog;
+use SplObserver;
+use SplSubject;
 
-class SeasLogger
+class SeasLogger implements SplObserver
 {
 
     /**
@@ -226,7 +228,7 @@ class SeasLogger
      * @param string $basePath
      * @return bool
      */
-    public function setBasePath(string $basePath)
+    public function setBasePath($basePath)
     {
         return SeasLog::setBasePath($basePath);
     }
@@ -376,6 +378,23 @@ class SeasLogger
         }
 
         return $logger;
+    }
+
+    public function update(SplSubject $subject)
+    {
+        try {
+            echo '<pre>';
+
+            print_r($subject);
+
+            echo "\r\n";
+//            exit;
+            // TODO: Implement update() method.
+//            $this->setBasePath(dirname(__DIR__) . '/log/');
+            $this->info('mac:{mac}  ip:{ip}  serial number:{serial_number}', ['mac' => 'fadksf', 'ip' => '127.0.0.1', 'serial_number' => 'fhdsafdhkfkaif43h32']);
+        } catch (\Exception $exception) {
+
+        }
     }
 }
 

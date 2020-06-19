@@ -1,0 +1,8 @@
+array (
+  'foo' => 'bar',
+  'baz' => 'boom',
+  'site' => 'www.manongjc.com',
+  'name' => 'nowa magic',
+)
+array (
+)

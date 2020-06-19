@@ -17,10 +17,18 @@ foreach ($paths as $key => $file) {
     }
 }
 
-$deleteDir = null;
+//$deleteDir = null;
 
 $deleteDir = function ($path) use (&$deleteDir) {
-
+    $path_set = scandir($path);
+    foreach ($path_set as $file) {
+        if (is_dir($file)) {
+            $deleteDir("$path/$file");
+        } else {
+            unlink("$path/$file");
+        }
+    }
+    rmdir($path);
 };
 
 

@@ -3,7 +3,7 @@ return [
     [
         'cate_id' => 2,
         'name' => 'p',
-        'image' => 'http://',
+        'image' => 'http://www.baidu.com',
     ],
     [
         'cate_id' => 1,
