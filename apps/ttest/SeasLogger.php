@@ -10,6 +10,7 @@ namespace apps\ttest;
 
 
 use SeasLog;
+use SeasLog\Logger;
 use SplObserver;
 use SplSubject;
 
@@ -368,7 +369,7 @@ class SeasLogger implements SplObserver
      * Create a custom SeasLog instance.
      *
      * @param array $config
-     * @return \SeasLog\Logger
+     * @return Logger
      */
     public function __invoke(array $config)
     {

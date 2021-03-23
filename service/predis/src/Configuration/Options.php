@@ -59,9 +59,6 @@ class Options implements OptionsInterface
     {
         if (isset($this->handlers[$option])) {
             $handler = $this->handlers[$option];
-            /**
-             * @var ConnectionFactoryOption $handler
-             */
             $handler = new $handler();
 
             return $handler->getDefault($this);

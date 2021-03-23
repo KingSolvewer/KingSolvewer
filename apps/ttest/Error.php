@@ -38,6 +38,7 @@ class Error
 
         // 符合异常处理的则将错误信息托管至 think\exception\ErrorException
         if (error_reporting() & $errno) {
+            echo "这里把错误托管为异常", "\r\n";
             throw $exception;
         }
 
@@ -52,6 +53,7 @@ class Error
      */
     public static function appException($e)
     {
+        echo "这里接收被抛出的异常", "\r\n";
         self::report($e);
     }
 
@@ -63,6 +65,7 @@ class Error
     public static function appShutdown()
     {
         var_dump(error_get_last());
+        echo "不论是错误还是异常，如果没有被处理，都将执行到这里", "\r\n";
         // 将错误信息托管至 think\ErrorException
         if (!is_null($error = error_get_last()) && self::isFatal($error['type'])) {
             self::appException(new ErrorException(

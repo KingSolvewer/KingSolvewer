@@ -19,10 +19,8 @@ use Predis\Configuration\OptionsInterface;
 use Predis\Connection\AggregateConnectionInterface;
 use Predis\Connection\ConnectionInterface;
 use Predis\Connection\ParametersInterface;
-use Predis\Connection\StreamConnection;
 use Predis\Monitor\Consumer as MonitorConsumer;
 use Predis\Pipeline\Pipeline;
-use Predis\Profile\RedisVersion320;
 use Predis\PubSub\Consumer as PubSubConsumer;
 use Predis\Response\ErrorInterface as ErrorResponseInterface;
 use Predis\Response\ResponseInterface;
@@ -42,17 +40,10 @@ use Predis\Transaction\MultiExec as MultiExecTransaction;
  */
 class Client implements ClientInterface, \IteratorAggregate
 {
-    const VERSION = '1.1.1';
+    const VERSION = '1.1.2-dev';
 
-    /**
-     * @var StreamConnection
-     */
     protected $connection;
     protected $options;
-
-    /**
-     * @var RedisVersion320
-     */
     private $profile;
 
     /**

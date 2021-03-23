@@ -1,11 +1,14 @@
 {
-
+    "name": "phpunit/phpunit",
+    "authors": [
+        {
+            "name": "KingSolvewer",
+            "email": "1010174558@qq.com"
+        }
+    ],
     "require": {
-        "predis/predis": "^1.1",
-        "maximebf/debugbar": "^1.15",
-        "phpunit/phpunit": "5.7.27",
       "ext-pdo": "*",
-      "ext-json": "*",
+      "ext-redis": "*",
       "ext-curl": "*"
     }
 }
